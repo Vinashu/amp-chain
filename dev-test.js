@@ -8,3 +8,4 @@ const block = new Block(
 );
 
 console.log(block.toString());
+console.log(Block.genesis().toString());
