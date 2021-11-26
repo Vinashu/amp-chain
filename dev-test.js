@@ -1,5 +1,8 @@
-const Block = require('./block');
+const Blockchain = require('./blockchain');
 
+const bc = new Blockchain();
+
+/*
 const block = new Block(
     'timestamp test',
     'last hash test',
@@ -16,3 +19,8 @@ const testBlock = Block.mineBlock(
 );
 
 console.log(testBlock.toString());
+*/
+
+for(let i=0; i<10; i++){
+    console.log(bc.addBlock(`test ${i}`).toString());
+}
