@@ -9,3 +9,10 @@ const block = new Block(
 
 console.log(block.toString());
 console.log(Block.genesis().toString());
+
+const testBlock = Block.mineBlock(
+    Block.genesis(),
+    'test string'
+);
+
+console.log(testBlock.toString());
