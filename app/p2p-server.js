@@ -48,7 +48,14 @@ class P2pServer {
             'message',
             message => {
                 const data = JSON.parse(message);
-                this.blockchain.replaceChain(data);
+                switch(data.type) {
+                    case MESSAGES_TYPE.chain:
+                        this.blockchain.replaceChain(data.chain);
+                    break;
+                    case MESSAGES_TYPE.transaction:
+                        this.transactionPool.updateOrAddTransaction(data.transaction);
+                    break;
+                }
             }
         );
     }
