@@ -25,7 +25,7 @@ class Transaction {
             }
         ]);
         Transaction.signTransaction(transaction, senderWallet);
-        
+
         return transaction;
     }
 
@@ -36,6 +36,14 @@ class Transaction {
             address: senderWallet.publicKey,
             signature: senderWallet.sign(ChainUtil.hash(transaction.outputs))
         }
+    }
+
+    static verifyTransaction(transaction) {  
+        return ChainUtil.verifySignature(
+            transaction.input.address,
+            transaction.input.signature,
+            ChainUtil.hash(transaction.outputs)
+        );
     }
 }
 
