@@ -49,6 +49,12 @@ HTTP_PORT=3003 P2P_PORT=5003 PEERS=ws://localhost:5001,ws//localhost:5002 npm ru
 ```
 Note that we are passing the **peers** addresses each time we start a new **node**. That is not a very good solution and I will think about how to do that automatically.
 
+## To run the test suite
+There are a test file for each class. Run the tests after any change to make sure the app is still working as it should be.
+```
+npm run test
+```
+
 ## Server API endpoints
 Each node will listen on two ports. The first is intended to respond to requests made through the HTTP protocol; the second is for communication between blockchain nodes. The valid endpoints are:
 
