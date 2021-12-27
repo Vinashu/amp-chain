@@ -60,9 +60,11 @@ Each node will listen on two ports. The first is intended to respond to requests
 
 ### (GET)/public-key
 Returns the node's public-key
-
-### (GET)/blocks 
-Returns the blockchain
+```
+{
+    "publicKey": "04c83911221d27b11d3c14874f67cec0773315f0500d4ff34de3bb55172ec21d6278a58828df036af6d9009d00976d67d38df5825542fee3aea077e87a27627057"
+}
+```
 
 ### (POST)/transact
 Submit a transaction to the blockchain. I expects a JSON object with a recipient and an amount.
@@ -75,7 +77,99 @@ Submit a transaction to the blockchain. I expects a JSON object with a recipient
 
 ### (GET)/transactions
 Return the list of transactions in the memory pool.
+```
+[
+    {
+        "id": "843a1df0-673d-11ec-a847-f9af80da3a3a",
+        "input": {
+            "timestamp": 1640627445071,
+            "amount": 500,
+            "address": "04c83911221d27b11d3c14874f67cec0773315f0500d4ff34de3bb55172ec21d6278a58828df036af6d9009d00976d67d38df5825542fee3aea077e87a27627057",
+            "signature": {
+                "r": "6715b7cc2c3c9dcd4432b2848d8306593cafa4de1ab27ec2a1cd8fd46cb0d63b",
+                "s": "b72c6fdd186a5e91585003ff7b809115b391b2d875fccc2ef6e3144115dd6f85",
+                "recoveryParam": 0
+            }
+        },
+        "outputs": [
+            {
+                "amount": 450,
+                "address": "04c83911221d27b11d3c14874f67cec0773315f0500d4ff34de3bb55172ec21d6278a58828df036af6d9009d00976d67d38df5825542fee3aea077e87a27627057"
+            },
+            {
+                "amount": 50,
+                "address": "Recipient address"
+            }
+        ]
+    }
+]
+```
+
+### (GET)/blocks 
+Returns the blockchain
+```
+[
+    {
+        "timestamp": 0,
+        "lastHash": "000000000000",
+        "hash": "000000000000",
+        "data": [],
+        "nonce": "000000000000",
+        "difficulty": 3
+    },
+    {
+        "timestamp": 1640627578292,
+        "lastHash": "000000000000",
+        "hash": "00bdfd41118375ae3d6a1b73261052157c545ac49a9e850eb2dd8c0f21de61d0",
+        "data": [
+            {
+                "id": "843a1df0-673d-11ec-a847-f9af80da3a3a",
+                "input": {
+                    "timestamp": 1640627445071,
+                    "amount": 500,
+                    "address": "04c83911221d27b11d3c14874f67cec0773315f0500d4ff34de3bb55172ec21d6278a58828df036af6d9009d00976d67d38df5825542fee3aea077e87a27627057",
+                    "signature": {
+                        "r": "6715b7cc2c3c9dcd4432b2848d8306593cafa4de1ab27ec2a1cd8fd46cb0d63b",
+                        "s": "b72c6fdd186a5e91585003ff7b809115b391b2d875fccc2ef6e3144115dd6f85",
+                        "recoveryParam": 0
+                    }
+                },
+                "outputs": [
+                    {
+                        "amount": 450,
+                        "address": "04c83911221d27b11d3c14874f67cec0773315f0500d4ff34de3bb55172ec21d6278a58828df036af6d9009d00976d67d38df5825542fee3aea077e87a27627057"
+                    },
+                    {
+                        "amount": 50,
+                        "address": "Recipient address"
+                    }
+                ]
+            },
+            {
+                "id": "d3a03280-673d-11ec-a847-f9af80da3a3a",
+                "input": {
+                    "timestamp": 1640627578280,
+                    "amount": 500,
+                    "address": "04e46326b86315cec81aeb18ad5ea4752e60a1466543cbd34e9535582b0becbda0c0a410a1ec15b08bdcc3460b80c9f9bdfcd26f13b316db9a7b44c61174508d9c",
+                    "signature": {
+                        "r": "ea3131897111ffafbe4fa437d365f4e260d86575e296ee92074d54c81f81785f",
+                        "s": "6b763e3d72da3f0565788945678e9ed4d3a550b858172a7d96c51c7b2cd9ae6c",
+                        "recoveryParam": 1
+                    }
+                },
+                "outputs": [
+                    {
+                        "amount": 50,
+                        "address": "04c83911221d27b11d3c14874f67cec0773315f0500d4ff34de3bb55172ec21d6278a58828df036af6d9009d00976d67d38df5825542fee3aea077e87a27627057"
+                    }
+                ]
+            }
+        ],
+        "nonce": 379,
+        "difficulty": 2
+    }
+]
+```
 
 ### (GET)/mine-transactions
-Mide the available transactions int he memory pool and add the block into the blockchain.
-
+Mine the available transactions int he memory pool and add the block into the blockchain.
