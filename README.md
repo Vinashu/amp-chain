@@ -67,7 +67,7 @@ Returns the node's public-key
 ```
 
 ### (POST)/transact
-Submit a transaction to the blockchain. I expects a JSON object with a recipient and an amount.
+Submit a transaction to the blockchain. It expects a JSON object with a recipient and an amount.
 ```
 {
     "recipient": "Recipient address",
